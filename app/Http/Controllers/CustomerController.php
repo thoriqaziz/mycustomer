@@ -62,9 +62,12 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Customer $customer)
     {
-        //
+        return response()->json([
+            'message' => "Show customer",
+            'data' => $customer
+        ]);
     }
 
     /**
@@ -85,9 +88,22 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'telephone' => 'required',
+            'address' => 'required',
+        ]);
+
+        $customer->update($data);
+
+        return response()->json([
+            'message' => "Customer was updated successfully",
+            'data' => $customer,
+        ], 200);
     }
 
     /**
@@ -96,8 +112,12 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        return response()->json([
+            'message' => "Customer was deleted successfully",
+        ], 200);
     }
 }
