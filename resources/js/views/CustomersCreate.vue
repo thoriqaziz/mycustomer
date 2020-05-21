@@ -1,6 +1,6 @@
 <template>
     <div class="ml-2">
-        <CustomersForm @submitted="create"></CustomersForm>
+        <CustomersForm @submitted="create" :errors="errors"></CustomersForm>
     </div>
 </template>
 
@@ -11,14 +11,20 @@ export default {
 
     components: { CustomersForm },
 
+    data: function() {
+        return{
+            errors: null
+        }
+    },
+
     methods: {
         create (data) {
             axios.post('/api/customers', data)
                 .then(result => {
 
                 })
-                .catch(response => {
-                    
+                .catch(error => {
+                    this.errors = error.response.data.errors;
                 })
         }
     }

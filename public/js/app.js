@@ -2030,9 +2030,18 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CustomersForm: _CustomersForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  data: function data() {
+    return {
+      errors: null
+    };
+  },
   methods: {
     create: function create(data) {
-      axios.post('/api/customers', data).then(function (result) {})["catch"](function (response) {});
+      var _this = this;
+
+      axios.post('/api/customers', data).then(function (result) {})["catch"](function (error) {
+        _this.errors = error.response.data.errors;
+      });
     }
   }
 });
@@ -2082,8 +2091,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CustomersForm",
+  props: ['errors'],
   data: function data() {
     return {
       name: '',
@@ -2100,6 +2122,23 @@ __webpack_require__.r(__webpack_exports__);
         telephone: this.telephone,
         address: this.address
       });
+    },
+    errorValue: function errorValue(column) {
+      if (this.errors && this.errors[column]) {
+        return this.errors[column][0];
+      }
+    },
+    errorClass: function errorClass(column) {
+      if (this.errors && this.errors[column]) {
+        return ['form-control', 'is-invalid'];
+      } else {
+        return 'form-control';
+      }
+    },
+    clearError: function clearError(column) {
+      if (this.errors && this.errors[column]) {
+        this.errors[column] = null;
+      }
     }
   }
 });
@@ -37946,7 +37985,12 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "ml-2" },
-    [_c("CustomersForm", { on: { submitted: _vm.create } })],
+    [
+      _c("CustomersForm", {
+        attrs: { errors: _vm.errors },
+        on: { submitted: _vm.create }
+      })
+    ],
     1
   )
 }
@@ -38000,18 +38044,29 @@ var render = function() {
                 expression: "name"
               }
             ],
-            staticClass: "form-control",
+            class: _vm.errorClass("name"),
             attrs: { type: "text", id: "name", placeholder: "Input name here" },
             domProps: { value: _vm.name },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.name = $event.target.value
+                },
+                function($event) {
+                  return _vm.clearError("name")
                 }
-                _vm.name = $event.target.value
-              }
+              ]
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _c("p", {
+              domProps: { textContent: _vm._s(_vm.errorValue("name")) }
+            })
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -38032,7 +38087,7 @@ var render = function() {
                 expression: "email"
               }
             ],
-            staticClass: "form-control",
+            class: _vm.errorClass("email"),
             attrs: {
               type: "email",
               id: "email",
@@ -38040,14 +38095,25 @@ var render = function() {
             },
             domProps: { value: _vm.email },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                },
+                function($event) {
+                  return _vm.clearError("email")
                 }
-                _vm.email = $event.target.value
-              }
+              ]
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _c("p", {
+              domProps: { textContent: _vm._s(_vm.errorValue("email")) }
+            })
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -38071,7 +38137,7 @@ var render = function() {
                 expression: "telephone"
               }
             ],
-            staticClass: "form-control",
+            class: _vm.errorClass("telephone"),
             attrs: {
               type: "text",
               id: "telephone",
@@ -38079,14 +38145,25 @@ var render = function() {
             },
             domProps: { value: _vm.telephone },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.telephone = $event.target.value
+                },
+                function($event) {
+                  return _vm.clearError("telephone")
                 }
-                _vm.telephone = $event.target.value
-              }
+              ]
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _c("p", {
+              domProps: { textContent: _vm._s(_vm.errorValue("telephone")) }
+            })
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -38107,7 +38184,7 @@ var render = function() {
                 expression: "address"
               }
             ],
-            staticClass: "form-control",
+            class: _vm.errorClass("address"),
             attrs: {
               id: "address",
               cols: "30",
@@ -38116,14 +38193,25 @@ var render = function() {
             },
             domProps: { value: _vm.address },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.address = $event.target.value
+                },
+                function($event) {
+                  return _vm.clearError("address")
                 }
-                _vm.address = $event.target.value
-              }
+              ]
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _c("p", {
+              domProps: { textContent: _vm._s(_vm.errorValue("address")) }
+            })
+          ])
         ])
       ]),
       _vm._v(" "),
