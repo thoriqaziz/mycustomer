@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customer;
 use App\Http\Requests\CustomerRequest;
+use App\Http\Resources\Customer as CustomerResource;
 
 class CustomerController extends Controller
 {
@@ -17,10 +18,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::all();
 
-        return response()->json([
-            'message' => "List all customers",
-            'data' => $customer
-        ]);
+        return CustomerResource::collection($customer);
     }
 
     /**
@@ -43,10 +41,7 @@ class CustomerController extends Controller
     {
         $customer = $request->user()->customers()->create($request->validated());
 
-        return response()->json([
-            'message' => "Customer was added successfully",
-            'data' => $customer,
-        ], 201);
+        return (new CustomerResource($customer))->response()->setStatusCode(201);
     }
 
     /**

@@ -2039,7 +2039,9 @@ __webpack_require__.r(__webpack_exports__);
     create: function create(data) {
       var _this = this;
 
-      axios.post('/api/customers', data).then(function (result) {})["catch"](function (error) {
+      axios.post('/api/customers', data).then(function (result) {
+        _this.$router.push(result.data.data.url);
+      })["catch"](function (error) {
         _this.errors = error.response.data.errors;
       });
     }
@@ -38435,7 +38437,7 @@ var render = function() {
   return _c("div", [
     _c(
       "ul",
-      { staticClass: "list-group" },
+      { staticClass: "list-group", attrs: { id: "list-customer" } },
       _vm._l(_vm.customers, function(customer) {
         return _c(
           "div",

@@ -21,7 +21,7 @@ export default {
         create (data) {
             axios.post('/api/customers', data)
                 .then(result => {
-
+                    this.$router.push(result.data.data.url);
                 })
                 .catch(error => {
                     this.errors = error.response.data.errors;
