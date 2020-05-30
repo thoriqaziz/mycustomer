@@ -2089,6 +2089,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CustomersDetail",
   mounted: function mounted() {
@@ -2104,6 +2123,19 @@ __webpack_require__.r(__webpack_exports__);
       customer: null,
       loading: true
     };
+  },
+  methods: {
+    destroy: function destroy() {
+      var _this2 = this;
+
+      axios["delete"]('/api/customers/' + this.$route.params.id).then(function (response) {
+        $('.close').click();
+
+        _this2.$router.push('/customers');
+      })["catch"](function (error) {
+        alert('Error: cannot delete customer.');
+      });
+    }
   }
 });
 
@@ -38171,10 +38203,43 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "a",
-                { staticClass: "btn btn-outline-danger", attrs: { href: "#" } },
+                "button",
+                {
+                  staticClass: "btn btn-outline-danger",
+                  attrs: { "data-toggle": "modal", "data-target": "#modal" }
+                },
                 [_vm._v("Delete")]
-              )
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal fade", attrs: { id: "modal" } }, [
+                _c("div", { staticClass: "modal-dialog" }, [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cancel")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: { click: _vm.destroy }
+                        },
+                        [_vm._v("Delete")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
             ],
             1
           )
@@ -38244,7 +38309,33 @@ var render = function() {
       ])
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Confirmation")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_c("span", [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("p", [_vm._v("Are you sure you want to delete this customer?")])
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -6,7 +6,26 @@
             </div>
             <div class="col-md-2">
                 <router-link :to="'/customers/'+ customer.customer_id + '/edit'" class="btn btn-outline-success">Edit</router-link>
-                <a href="#" class="btn btn-outline-danger">Delete</a>
+                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#modal">Delete</button>
+
+                <!-- MODAL -->
+                <div class="modal fade" id="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this customer?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-danger" @click="destroy">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mt-4">
@@ -47,6 +66,19 @@ export default {
         return {
             customer: null,
             loading: true
+        }
+    },
+
+    methods: {
+        destroy: function () {
+            axios.delete('/api/customers/' + this.$route.params.id)
+                .then(response => {
+                    $('.close').click();
+                    this.$router.push('/customers');
+                })
+                .catch(error => {
+                    alert('Error: cannot delete customer.');
+                });
         }
     }
 }
