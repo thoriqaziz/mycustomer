@@ -52,10 +52,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return response()->json([
-            'message' => "Show customer",
-            'data' => $customer
-        ]);
+        return new CustomerResource($customer);
     }
 
     /**
@@ -76,14 +73,11 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(CustomerRequest $request, Customer $customer)
     {
         $customer->update($request->validated());
 
-        return response()->json([
-            'message' => "Customer was updated successfully",
-            'data' => $customer,
-        ], 200);
+        return (new CustomerResource($customer))->response()->setStatusCode(200);
     }
 
     /**

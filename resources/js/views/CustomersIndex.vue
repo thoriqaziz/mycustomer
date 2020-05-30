@@ -2,7 +2,7 @@
     <div>
         <ul class="list-group" id="list-customer">
             <div v-for="customer in customers" :key="customer.id">
-                <router-link :to="'/customers/' + customer.id" class="d-flex border-bottom border-secondary p-2 text-decoration-none">
+                <router-link :to="'/customers/' + customer.customer_id" class="d-flex border-bottom border-secondary p-2 text-decoration-none">
                     <li class="list-group-item border-0">
                         <div class="row">
                             <div class="col-md-3">

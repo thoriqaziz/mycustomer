@@ -2,10 +2,10 @@
     <div v-if="!loading">
         <div class="row">
             <div class="col-md-4">
-                <a href="#" class="btn btn-light">Back</a>
+                <a href="#" class="btn btn-light" @click="$router.back()">Back</a>
             </div>
             <div class="col-md-2">
-                <a href="#" class="btn btn-outline-success">Edit</a>
+                <router-link :to="'/customers/'+ customer.customer_id + '/edit'" class="btn btn-outline-success">Edit</router-link>
                 <a href="#" class="btn btn-outline-danger">Delete</a>
             </div>
         </div>
