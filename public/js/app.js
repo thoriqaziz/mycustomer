@@ -1959,6 +1959,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     var _this = this;
 
+    this.title = this.$route.meta.title;
     window.axios.interceptors.request.use(function (config) {
       if (config.method === "get") {
         config.url = config.url + '?api_token=' + _this.user.api_token;
@@ -1970,6 +1971,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return config;
     });
+  },
+  data: function data() {
+    return {
+      title: ''
+    };
+  },
+  watch: {
+    $route: function $route(to, from) {
+      this.title = to.meta.title;
+    },
+    title: function title() {
+      document.title = this.title + ' | myCustomer';
+    }
   }
 });
 
@@ -38022,7 +38036,20 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { attrs: { id: "page-content-wrapper" } }, [
-      _vm._m(2),
+      _c(
+        "nav",
+        {
+          staticClass:
+            "navbar navbar-light bg-light mt-4 border-bottom border-secondary"
+        },
+        [
+          _c("div", { staticClass: "navbar-brand" }, [
+            _vm._v(_vm._s(_vm.title))
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "container-fluid pt-4" }, [_c("router-view")], 1)
     ])
@@ -38047,23 +38074,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      {
-        staticClass:
-          "navbar navbar-light bg-light mt-4 border-bottom border-secondary"
-      },
-      [
-        _c("div", { staticClass: "navbar-brand" }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("div", [
-          _c("input", {
-            staticClass: "form-control mr-sm-2",
-            attrs: { id: "searchTerm", placeholder: "Search..." }
-          })
-        ])
-      ]
-    )
+    return _c("div", [
+      _c("input", {
+        staticClass: "form-control mr-sm-2",
+        attrs: { id: "searchTerm", placeholder: "Search..." }
+      })
+    ])
   }
 ]
 render._withStripped = true
@@ -54034,19 +54050,34 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '/',
-    component: _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_2__["default"],
+    meta: {
+      title: 'Welcome'
+    }
   }, {
     path: '/customers',
-    component: _views_CustomersIndex__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _views_CustomersIndex__WEBPACK_IMPORTED_MODULE_3__["default"],
+    meta: {
+      title: 'List Customers'
+    }
   }, {
     path: '/customers/create',
-    component: _views_CustomersCreate__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _views_CustomersCreate__WEBPACK_IMPORTED_MODULE_4__["default"],
+    meta: {
+      title: 'Create Customer'
+    }
   }, {
     path: '/customers/:id',
-    component: _views_CustomersDetail__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _views_CustomersDetail__WEBPACK_IMPORTED_MODULE_5__["default"],
+    meta: {
+      title: 'Customer Detail'
+    }
   }, {
     path: '/customers/:id/edit',
-    component: _views_CustomersEdit__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _views_CustomersEdit__WEBPACK_IMPORTED_MODULE_6__["default"],
+    meta: {
+      title: 'Edit Customer'
+    }
   }],
   mode: 'history'
 }));

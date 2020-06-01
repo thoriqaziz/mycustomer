@@ -23,7 +23,7 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
       <nav class="navbar navbar-light bg-light mt-4 border-bottom border-secondary">
-        <div class="navbar-brand">Title</div>
+        <div class="navbar-brand">{{ title }}</div>
         <div>
             <input class="form-control mr-sm-2" id="searchTerm" placeholder="Search...">
         </div>
@@ -44,6 +44,8 @@ export default {
     props: ['user'],
 
     created() {
+      this.title = this.$route.meta.title;
+
       window.axios.interceptors.request.use(
         (config) => {
           if (config.method === "get") {
@@ -59,6 +61,22 @@ export default {
           return config;
         }
       )
+    },
+
+    data: function () {
+      return {
+        title: ''
+      }
+    },
+
+    watch: {
+      $route(to, from) {
+        this.title = to.meta.title;
+      },
+
+      title() {
+        document.title = this.title + ' | myCustomer';
+      }
     }
 }
 </script>
