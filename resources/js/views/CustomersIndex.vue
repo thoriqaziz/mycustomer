@@ -6,7 +6,7 @@
                     <li class="list-group-item border-0">
                         <div class="row">
                             <div class="col-md-3">
-                                <div class="btn rounded border text-white bg-primary align-center" style="height:40px; width:40px"><center>Ta</center></div>
+                                <CustomerLogo :name="customer.name" />
                             </div>
                             <div class="col-md-9">
                                 <label class="m-0">{{ customer.name }}</label><br>
@@ -21,8 +21,12 @@
 </template>
 
 <script>
+import CustomerLogo from '../components/CustomerLogo';
+
 export default {
     name: "CustomersIndex",
+
+    components: { CustomerLogo },
 
     mounted() {
         axios.get('api/customers')

@@ -8,10 +8,10 @@
         </div>
         
         <ul class="list-unstyled">
-          <li>
+          <li :class="{ 'active': title === 'Create Customer'}">
               <router-link to="/customers/create">Add New Customer</router-link>
           </li>
-          <li>
+          <li :class="{ 'active': title === 'List Customers'}">
               <router-link to="/customers">All Customers</router-link>
           </li>
           <li>
