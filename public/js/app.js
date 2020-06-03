@@ -1989,6 +1989,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerLogo.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CustomerLogo.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "CustomerLogo",
+  props: ['name'],
+  computed: {
+    customerLogo: function customerLogo() {
+      return this.name.substring(0, 2);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -2073,6 +2098,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_CustomerLogo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/CustomerLogo */ "./resources/js/components/CustomerLogo.vue");
 //
 //
 //
@@ -2122,8 +2148,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CustomersDetail",
+  components: {
+    CustomerLogo: _components_CustomerLogo__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -2320,6 +2350,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_CustomerLogo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/CustomerLogo */ "./resources/js/components/CustomerLogo.vue");
 //
 //
 //
@@ -2342,8 +2373,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CustomersIndex",
+  components: {
+    CustomerLogo: _components_CustomerLogo__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -38013,6 +38048,7 @@ var render = function() {
       _c("ul", { staticClass: "list-unstyled" }, [
         _c(
           "li",
+          { class: { active: _vm.title === "Create Customer" } },
           [
             _c("router-link", { attrs: { to: "/customers/create" } }, [
               _vm._v("Add New Customer")
@@ -38023,6 +38059,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "li",
+          { class: { active: _vm.title === "List Customers" } },
           [
             _c("router-link", { attrs: { to: "/customers" } }, [
               _vm._v("All Customers")
@@ -38082,6 +38119,38 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerLogo.vue?vue&type=template&id=3deadbd8&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CustomerLogo.vue?vue&type=template&id=3deadbd8& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "btn rounded border text-white bg-primary align-center",
+      staticStyle: { height: "40px", width: "40px" }
+    },
+    [_c("center", [_vm._v(_vm._s(_vm.customerLogo))])],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38262,26 +38331,22 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row mt-4" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "btn rounded border text-white bg-primary align-center",
-                staticStyle: { height: "40px", width: "40px" }
-              },
-              [_c("center", [_vm._v("Ta")])],
-              1
-            ),
-            _vm._v(" "),
-            _c("h4", { staticClass: "d-inline" }, [
-              _vm._v(_vm._s(_vm.customer.name))
-            ])
-          ])
+          _c(
+            "div",
+            { staticClass: "col-md-6 ml-2" },
+            [
+              _c("CustomerLogo", { attrs: { name: _vm.customer.name } }),
+              _vm._v(" "),
+              _c("h4", { staticClass: "d-inline pl-2" }, [
+                _vm._v(_vm._s(_vm.customer.name))
+              ])
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-md-6 ml-2" }, [
             _c(
               "p",
               {
@@ -38673,18 +38738,12 @@ var render = function() {
               [
                 _c("li", { staticClass: "list-group-item border-0" }, [
                   _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-3" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "btn rounded border text-white bg-primary align-center",
-                          staticStyle: { height: "40px", width: "40px" }
-                        },
-                        [_c("center", [_vm._v("Ta")])],
-                        1
-                      )
-                    ]),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-3" },
+                      [_c("CustomerLogo", { attrs: { name: customer.name } })],
+                      1
+                    ),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-md-9" }, [
                       _c("label", { staticClass: "m-0" }, [
@@ -53948,6 +54007,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_332fccf4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_332fccf4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/CustomerLogo.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/CustomerLogo.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CustomerLogo_vue_vue_type_template_id_3deadbd8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CustomerLogo.vue?vue&type=template&id=3deadbd8& */ "./resources/js/components/CustomerLogo.vue?vue&type=template&id=3deadbd8&");
+/* harmony import */ var _CustomerLogo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomerLogo.vue?vue&type=script&lang=js& */ "./resources/js/components/CustomerLogo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CustomerLogo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CustomerLogo_vue_vue_type_template_id_3deadbd8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CustomerLogo_vue_vue_type_template_id_3deadbd8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CustomerLogo.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CustomerLogo.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/CustomerLogo.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerLogo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CustomerLogo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerLogo.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerLogo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CustomerLogo.vue?vue&type=template&id=3deadbd8&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/CustomerLogo.vue?vue&type=template&id=3deadbd8& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerLogo_vue_vue_type_template_id_3deadbd8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CustomerLogo.vue?vue&type=template&id=3deadbd8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CustomerLogo.vue?vue&type=template&id=3deadbd8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerLogo_vue_vue_type_template_id_3deadbd8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CustomerLogo_vue_vue_type_template_id_3deadbd8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -29,13 +29,13 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="btn rounded border text-white bg-primary align-center" style="height:40px; width:40px"><center>Ta</center></div>
-                <h4 class="d-inline">{{ customer.name }}</h4>
+            <div class="col-md-6 ml-2">
+                <CustomerLogo :name="customer.name" />
+                <h4 class="d-inline pl-2">{{ customer.name }}</h4>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 ml-2">
                 <p class="text-uppercase text-secondary font-weight-bold pt-4 mb-2">Email</p>
                 <p class="text-info">{{ customer.email }}</p>
                 <p class="text-uppercase text-secondary font-weight-bold pt-4 mb-2">Telephone</p>
@@ -48,8 +48,12 @@
 </template>
 
 <script>
+import CustomerLogo from '../components/CustomerLogo';
+
 export default {
     name: "CustomersDetail",
+
+    components: { CustomerLogo },
 
     mounted() {
         axios.get('/api/customers/' + this.$route.params.id)
