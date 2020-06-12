@@ -9,13 +9,13 @@
         
         <ul class="list-unstyled">
           <li :class="{ 'active': title === 'Create Customer'}">
-              <router-link to="/customers/create">Add New Customer</router-link>
+              <router-link to="/customers/create"><i class="fa fa-plus"></i> Add New Customer</router-link>
           </li>
           <li :class="{ 'active': title === 'List Customers'}">
-              <router-link to="/customers">All Customers</router-link>
+              <router-link to="/customers"><i class="fa fa-list"></i> All Customers</router-link>
           </li>
           <li>
-			<a href="#" > Logout</a>
+			      <router-link to="/logout"><i class="fa fa-sign-out"></i> Logout</router-link>
           </li>
       </ul>
     </nav>
