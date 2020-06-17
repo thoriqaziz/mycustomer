@@ -5,8 +5,8 @@
                 <a href="#" class="btn btn-light" @click="$router.back()">Back</a>
             </div>
             <div class="col-md-2">
-                <router-link :to="'/customers/'+ customer.customer_id + '/edit'" class="btn btn-outline-success">Edit</router-link>
-                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#modal">Delete</button>
+                <router-link v-if="customer.user_id == userId" :to="'/customers/'+ customer.customer_id + '/edit'" class="btn btn-outline-success">Edit</router-link>
+                <button v-if="customer.user_id == userId" class="btn btn-outline-danger" data-toggle="modal" data-target="#modal">Delete</button>
 
                 <!-- MODAL -->
                 <div class="modal fade" id="modal">
@@ -69,8 +69,13 @@ export default {
     data: function() {
         return {
             customer: null,
-            loading: true
+            loading: true,
+            userId: null
         }
+    },
+
+    created () {
+        this.userId = this.$parent.user.id;
     },
 
     methods: {

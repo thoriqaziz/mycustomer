@@ -2247,8 +2247,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       customer: null,
-      loading: true
+      loading: true,
+      userId: null
     };
+  },
+  created: function created() {
+    this.userId = this.$parent.user.id;
   },
   methods: {
     destroy: function destroy() {
@@ -38495,25 +38499,29 @@ var render = function() {
             "div",
             { staticClass: "col-md-2" },
             [
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn btn-outline-success",
-                  attrs: {
-                    to: "/customers/" + _vm.customer.customer_id + "/edit"
-                  }
-                },
-                [_vm._v("Edit")]
-              ),
+              _vm.customer.user_id == _vm.userId
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-outline-success",
+                      attrs: {
+                        to: "/customers/" + _vm.customer.customer_id + "/edit"
+                      }
+                    },
+                    [_vm._v("Edit")]
+                  )
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-outline-danger",
-                  attrs: { "data-toggle": "modal", "data-target": "#modal" }
-                },
-                [_vm._v("Delete")]
-              ),
+              _vm.customer.user_id == _vm.userId
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-danger",
+                      attrs: { "data-toggle": "modal", "data-target": "#modal" }
+                    },
+                    [_vm._v("Delete")]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "modal fade", attrs: { id: "modal" } }, [
                 _c("div", { staticClass: "modal-dialog" }, [
